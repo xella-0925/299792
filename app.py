@@ -77,7 +77,7 @@ def main():
         st.write('Original Image:')
         st.pyplot(act3.visualize(act3_image))
         st.write('Image Transformations: ', *_act3_transformations)
-            for transformation in _act3_transformations:
+        for transformation in _act3_transformations:
             if transformation == 'translate':
                 st.write("Translation")
                 st.pyplot(act3.visualize(task3.translate(act3_image, _act3_translationx, _act3_translationy)))
