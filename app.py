@@ -30,31 +30,32 @@ def main():
                             ['translate', 'rotate', 'reflect', 'scale', 'shear'])
 
  
+    
     if 'translate' in _act3_transformations:
-        _act3_translated_imgx = st.sidebar.slider('X Translation', 0, 1000)
-        _act3_translated_imgy = st.sidebar.slider('Y Translation', 0, 1000)
-
+        _act3_translationx = st.sidebar.slider('X Translation', 0, 1000)
+        _act3_translationy = st.sidebar.slider('Y Translation', 0, 1000)
+        
     if 'reflect' in _act3_transformations:
-        _act3_reflectedx = st.sidebar.checkbox('Reflect along x axis', True)
-        _act3_reflectdny = st.sidebar.checkbox('Reflect along y axis')
-        _act3_reflected = ''
-        if _act3_reflectedx and _task3_reflectedy:
+        _act3_reflectionx = st.sidebar.checkbox('Reflect along x axis', True)
+        _act3_reflectiony = st.sidebar.checkbox('Reflect along y axis')
+        _act3_reflection = ''
+        if _act3_reflectionx and _act3_reflectiony:
             _act3_reflection = 'x y'
-        elif _act3_reflectedx:
-            _act3_reflected = 'x'
-        elif _act3_reflectedy:
-            _act3_reflected = 'y'
-
+        elif _act3_reflectionx:
+            _act3_reflection = 'x'
+        elif _act3_reflectiony:
+            _act3_reflection = 'y'
+        
     if 'rotate' in _act3_transformations:
-        _act3_rotated_img = st.sidebar.slider('Rotation', -360, 360, 0)
-
+        _act3_rotation = st.sidebar.slider('Rotation', -360, 360, 0)
+        
     if 'scale' in _act3_transformations:
-        _act3_scaled_img = st.sidebar.slider('Scale', 0, 5, 1)
-
+        _act3_scale = st.sidebar.slider('Scale', 0.0, 5.0, 1.0, 0.000001)
+        
     if 'shear' in _act3_transformations:
-        _act3_sheared_imgx = st.sidebar.slider('X Shear', 0.0, 5.0, 0.0, 0.000001)
-        _act3_sheared_imgy = st.sidebar.slider('Y Shear', 0.0, 5.0, 0.0, 0.000001)
-
+        _act3_shearx = st.sidebar.slider('X Shear', 0.0, 5.0, 0.0, 0.000001)
+        _act3_sheary = st.sidebar.slider('Y Shear', 0.0, 5.0, 0.0, 0.000001)
+ 
 
     st.header("Activity 1")
     st.subheader("DDA Line Algorithm")
@@ -71,9 +72,9 @@ def main():
     st.header("Activity 3")
     st.subheader("Image Transformations")
     for act3_image in _act3_images:
-        act3_image = Image.open(task3_image)
-        # task3_image = cv2.cvtColor(np.asarray(act3_image), cv2.COLOR_BGR2RGB)
-        act3_image = np.asarray(act3_image)
+        act3_image = Image.open(act3_image)
+        # task3_image = cv2.cvtColor(np.asarray(task3_image), cv2.COLOR_BGR2RGB)
+        act3_image = np.asarray(task3_image)
         st.write('Original Image:')
         st.pyplot(act3.visualize(act3_image))
         st.write('Image Transformations: ', *_act3_transformations)
@@ -81,20 +82,20 @@ def main():
             match transformation:
                 case 'translate':
                     st.write("Translation")
-                    st.pyplot(act3.visualize(act3.translate(act3_image, _act3_translated_imgx, _act3_translated_imgy)))
+                    st.pyplot(act3.visualize(task3.translate(act3_image, _act3_translationx, _act3_translationy)))
                 case 'rotate':
                     st.write("Rotation")
-                    st.pyplot(act3.visualize(act3.rotate(act3_image, _act3_rotated_img)))
+                    st.pyplot(act3.visualize(act3.rotate(act3_image, _act3_rotation)))
                 case 'reflect':
                     st.write("Reflect")
-                    st.pyplot(act3.visualize(act3.reflect(act3_image, _act3_reflected)))
+                    st.pyplot(act3.visualize(act3.reflect(act3_image, _act3_reflection)))
                 case 'scale':
                     st.write("Scale")
-                    st.pyplot(act3.visualize(act3.scale(act3_image, _act3_scaled_img)))
+                    st.pyplot(act3.visualize(act3.scale(act3_image, _act3_scale)))
                 case 'shear':
                     st.write("Shear")
-                    st.pyplot(act3.visualize(act3.shear(act3_image, _act3_sheared_imgx, _act3_sheared_imgy)))
-    
+                    st.pyplot(act3.visualize(act3.shear(act3_image, _act3_shearx, _act3_sheary)))
+                    
     if st.button("Exit"):
         st.stop()
 
