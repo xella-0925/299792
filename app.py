@@ -4,7 +4,7 @@ import numpy as np
 import cv2
 import pages.activity_1 as act1
 import pages.activity_2 as act2
-#import pages.activity_3 as act3
+import pages.activity_3 as act3
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 #st.set_option ('browser.gatherUsageStats' , False)
