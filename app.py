@@ -74,8 +74,8 @@ def main():
     st.subheader("Image Transformations")
     for act3_image in _act3_images:
         act3_image = Image.open(act3_image)
-        # task3_image = cv2.cvtColor(np.asarray(task3_image), cv2.COLOR_BGR2RGB)
-        act3_image = np.asarray(task3_image)
+        # task3_image = cv2.cvtColor(np.asarray(act3_image), cv2.COLOR_BGR2RGB)
+        act3_image = np.asarray(act3_image)
         st.write('Original Image:')
         st.pyplot(act3.visualize(act3_image))
         st.write('Image Transformations: ', *_act3_transformations)
