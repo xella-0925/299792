@@ -31,8 +31,8 @@ def main():
 
  
     if 'translate' in _act3_transformations:
-        #_act3_translated_imgx = st.sidebar.slider('X Translation', 0, 1000)
-        #_act3_translated_imgy = st.sidebar.slider('Y Translation', 0, 1000)
+        _act3_translated_imgx = st.sidebar.slider('X Translation', 0, 1000)
+        _act3_translated_imgy = st.sidebar.slider('Y Translation', 0, 1000)
 
     if 'reflect' in _act3_transformations:
         _act3_reflectedx = st.sidebar.checkbox('Reflect along x axis', True)
