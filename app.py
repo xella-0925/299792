@@ -77,24 +77,23 @@ def main():
         st.write('Original Image:')
         st.pyplot(act3.visualize(act3_image))
         st.write('Image Transformations: ', *_act3_transformations)
-        for transformation in _act3_transformations:
-           match transformation:
-                case 'translate':
-                    st.write("Translation")
-                    st.pyplot(act3.visualize(act3.translate(act3_image, _act3_translationx, _act3_translationy))):
-                case 'rotate':
-                    st.write("Rotation")
-                    st.pyplot(act3.visualize(act3.rotate(act3_image, _act3_rotation)))
-                case 'reflect':
-                    st.write("Reflect")
-                    st.pyplot(act3.visualize(act3.reflect(act3_image, _act3_reflection)))
-                case 'scale':
-                    st.write("Scale")
-                    st.pyplot(act3.visualize(act3.scale(act3_image, _act3_scale)))
-                case 'shear':
-                    st.write("Shear")
-                    st.pyplot(act3.visualize(act3.shear(act3_image, _act3_shearx, _act3_sheary)))
-                    
+       for transformation in _act3_transformations:
+            if transformation == 'translate':
+                st.write("Translation")
+                st.pyplot(act3.visualize(task3.translate(act3_image, _act3_translationx, _act3_translationy)))
+            elif transformation == 'rotate':
+                st.write("Rotation")
+                st.pyplot(act3.visualize(act3.rotate(act3_image, _act3_rotation)))
+            elif transformation == 'reflect':
+                st.write("Reflect")
+                st.pyplot(act3.visualize(act3.reflect(act3_image, _act3_reflection)))
+            elif transformation == 'scale':
+                st.write("Scale")
+                st.pyplot(act3.visualize(act3.scale(act3_image, _act3_scale)))
+            elif transformation == 'shear':
+                st.write("Shear")
+                st.pyplot(act3.visualize(act3.shear(act3_image, _act3_shearx, _act3_sheary)))
+
     if st.button("Exit"):
         st.stop()
 
