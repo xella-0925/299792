@@ -30,8 +30,6 @@ def main():
     _act3_transformations = st.sidebar.multiselect('Select tranformations to apply: ', \
                             ['translate', 'rotate', 'reflect', 'scale', 'shear'])
 
- 
-    
     if 'translate' in _act3_transformations:
         _act3_translationx = st.sidebar.slider('X Translation', 0, 1000)
         _act3_translationy = st.sidebar.slider('Y Translation', 0, 1000)
@@ -103,4 +101,3 @@ def main():
 if  __name__ == "__main__":
     main()
     
-
