@@ -81,7 +81,7 @@ def main():
            match transformation:
                 case 'translate':
                     st.write("Translation")
-                    st.pyplot(act3.visualize(task3.translate(act3_image, _act3_translationx, _act3_translationy)))
+                    st.pyplot(act3.visualize(act3.translate(act3_image, _act3_translationx, _act3_translationy))):
                 case 'rotate':
                     st.write("Rotation")
                     st.pyplot(act3.visualize(act3.rotate(act3_image, _act3_rotation)))
