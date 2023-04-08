@@ -24,29 +24,36 @@ def main():
                                      st.sidebar.slider('Y coordinate', 0, 2, 0, 1), \
                                      st.sidebar.slider('Hue', 0, 100, 50)
 
-    #st.sidebar.header("Image transformations")
-    #_act3_filepath = st.sidebar.text_input('Enter file path: ', 'pages/biniarms.webp')
+    st.sidebar.header("Image transformations")
+    _act3_images = st.sidebar.file_uploader('Upload your files here', ['png', 'jpg', 'webp'], True)
+    _act3_transformations = st.sidebar.multiselect('Select tranformations to apply: ', \
+                            ['translate', 'rotate', 'reflect', 'scale', 'shear'])
 
-    #_act3_transformations = st.sidebar.multiselect('Select tranformations to apply: ', \
-                            #['translate', 'rotate', 'reflect', 'scale', 'shear'])
-
-    #if 'translate' in _act3_transformations:
+ 
+    if 'translate' in _act3_transformations:
         #_act3_translated_imgx = st.sidebar.slider('X Translation', 0, 1000)
         #_act3_translated_imgy = st.sidebar.slider('Y Translation', 0, 1000)
 
-    #if 'reflect' in _act3_transformations:
-        #_act3_reflected_imgx = st.sidebar.checkbox('Reflect along x axis')
-        #_act3_reflected_imgy = st.sidebar.checkbox('Reflect along y axis')
+    if 'reflect' in _act3_transformations:
+        _act3_reflectedx = st.sidebar.checkbox('Reflect along x axis', True)
+        _act3_reflectdny = st.sidebar.checkbox('Reflect along y axis')
+        _act3_reflected = ''
+        if _act3_reflectedx and _task3_reflectedy:
+            _act3_reflection = 'x y'
+        elif _act3_reflectedx:
+            _act3_reflected = 'x'
+        elif _act3_reflectedy:
+            _act3_reflected = 'y'
 
-    #if 'rotate' in _act3_transformations:
+    if 'rotate' in _act3_transformations:
         #_act3_rotated_img = st.sidebar.slider('Rotation', -360, 360, 0)
 
-    #if 'scale' in _act3_transformations:
+    if 'scale' in _act3_transformations:
         #_act3_scaled_img = st.sidebar.slider('Scale', 0, 5, 1)
 
-    #if 'shear' in _act3_transformations:
-        #_act3_sheared_imgx = st.sidebar.slider('X Shear', 0, 5, 1)
-        #_act3_sheared_imgy = st.sidebar.slider('Y Shear', 0, 5, 1)
+    if 'shear' in _act3_transformations:
+        #_act3_sheared_imgx = st.sidebar.slider('X Shear', 0.0, 5.0, 0.0, 0.000001)
+        #_act3_sheared_imgy = st.sidebar.slider('Y Shear', 0.0, 5.0, 0.0, 0.000001)
 
 
     st.header("Activity 1")
@@ -61,13 +68,44 @@ def main():
     st.subheader("Change a pixel's color")
     st.pyplot(act2.fill(_act2_x, _act2_y, _act2_hue))
 
-    #st.header("Activity 3")
-    #st.subheader("Image Transformations")
-    #st.write('File Path: ', _act3_filepath)
-    #act3_image = cv2.cvtColor(cv2.imread(_act3_filepath), cv2.COLOR_BGR2RGB)
-    #st.write('Original Image:')
-    #st.pyplot(act3.visualize(act3_image))
-    #st.write('Image Transformations: ', *_act3_transformations)
+    st.header("Activity 3")
+    st.subheader("Image Transformations")
+    st.write('File Path: ', _act3_filepath)
+    act3_image = cv2.cvtColor(cv2.imread(_act3_filepath), cv2.COLOR_BGR2RGB)
+    st.write('Original Image:')
+    st.pyplot(act3.visualize(act3_image))
+    st.write('Image Transformations: ', *_act3_transformations)
+    
+   
+    st.subheader("Image Transformations")
+    # st.write('File Path: ', _task3_filepath)
+    for act3_image in _act3_images:
+        act3_image = Image.open(task3_image)
+        # task3_image = cv2.cvtColor(np.asarray(act3_image), cv2.COLOR_BGR2RGB)
+        act3_image = np.asarray(act3_image)
+        st.write('Original Image:')
+        st.pyplot(act3.visualize(act3_image))
+        st.write('Image Transformations: ', *_act3_transformations)
+        for transformation in _act3_transformations:
+            match transformation:
+                case 'translate':
+                    st.write("Translation")
+                    st.pyplot(act3.visualize(act3.translate(act3_image, _act3_translated_imgx, _act3_translated_imgy)))
+                case 'rotate':
+                    st.write("Rotation")
+                    st.pyplot(act3.visualize(act3.rotate(act3_image, _act3_rotated_img)))
+                case 'reflect':
+                    st.write("Reflect")
+                    st.pyplot(act3.visualize(act3.reflect(act3_image, _act3_reflected)))
+                case 'scale':
+                    st.write("Scale")
+                    st.pyplot(act3.visualize(act3.scale(act3_image, _act3_scaled_img)))
+                case 'shear':
+                    st.write("Shear")
+                    st.pyplot(act3.visualize(act3.shear(act3_image, _act3_sheared_imgx, _act3_sheared_imgy)))
+    
+    if st.button("Exit"):
+        st.stop()
     
     if st.button("Exit"):
         st.stop()
