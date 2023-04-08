@@ -2,7 +2,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
 import cv2
-#import pages.activity_1 as act1
+import pages.activity_1 as act1
 import pages.activity_2 as act2
 #import pages.activity_3 as act3
 
@@ -49,13 +49,13 @@ def main():
         #_act3_sheared_imgy = st.sidebar.slider('Y Shear', 0, 5, 1)
 
 
-    #st.header("Activity 1")
-    #st.subheader("DDA Line Algorithm")
-    #st.pyplot(act1.DDALine(_act1_x0, _act1_y0, _act1_x1, _act1_y1, 'ro'))
-    #st.subheader("Bresenham's Line Algorithm")
-    #t.pyplot(act1.bresenham(_act1_x0, _act1_y0, _act1_x1, _act1_y1, 'ro'))
-    #st.subheader("Midpoint Line Algorithm")
-    #st.pyplot(act1.midpoint(_act1_x0, _act1_y0, _act1_x1, _act1_y1))
+    st.header("Activity 1")
+    st.subheader("DDA Line Algorithm")
+    st.pyplot(act1.DDALine(_act1_x0, _act1_y0, _act1_x1, _act1_y1, 'ro'))
+    st.subheader("Bresenham's Line Algorithm")
+    st.pyplot(act1.bresenham(_act1_x0, _act1_y0, _act1_x1, _act1_y1, 'ro'))
+    st.subheader("Midpoint Line Algorithm")
+    st.pyplot(act1.midpoint(_act1_x0, _act1_y0, _act1_x1, _act1_y1, 'ro'))
 
     st.header("Activity 2")
     st.subheader("Change a pixel's color")
