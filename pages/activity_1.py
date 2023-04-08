@@ -104,7 +104,7 @@ def main():
     color = "#aa2533"
     fig = DDALine(x, y, x_end, y_end, color)
     plt.show()
-    Bres(x, y, x_end, y_end, color)
+    bresenham(x, y, x_end, y_end, color)
     midpoint(x, y, x_end, y_end, color)
 
 if __name__ == "__main__":
