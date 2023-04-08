@@ -25,7 +25,7 @@ def DDALine(x1, y1, x2, y2, color):
     
     return fig
 
-def Bres(x1,y1,x2,y2, color):
+def bresenham(x1,y1,x2,y2, color):
     fig = plt.figure()
 
     x,y = x1,y1
