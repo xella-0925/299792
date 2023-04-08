@@ -46,14 +46,14 @@ def main():
             _act3_reflected = 'y'
 
     if 'rotate' in _act3_transformations:
-        #_act3_rotated_img = st.sidebar.slider('Rotation', -360, 360, 0)
+        _act3_rotated_img = st.sidebar.slider('Rotation', -360, 360, 0)
 
     if 'scale' in _act3_transformations:
-        #_act3_scaled_img = st.sidebar.slider('Scale', 0, 5, 1)
+        _act3_scaled_img = st.sidebar.slider('Scale', 0, 5, 1)
 
     if 'shear' in _act3_transformations:
-        #_act3_sheared_imgx = st.sidebar.slider('X Shear', 0.0, 5.0, 0.0, 0.000001)
-        #_act3_sheared_imgy = st.sidebar.slider('Y Shear', 0.0, 5.0, 0.0, 0.000001)
+        _act3_sheared_imgx = st.sidebar.slider('X Shear', 0.0, 5.0, 0.0, 0.000001)
+        _act3_sheared_imgy = st.sidebar.slider('Y Shear', 0.0, 5.0, 0.0, 0.000001)
 
 
     st.header("Activity 1")
@@ -70,15 +70,6 @@ def main():
 
     st.header("Activity 3")
     st.subheader("Image Transformations")
-    st.write('File Path: ', _act3_filepath)
-    act3_image = cv2.cvtColor(cv2.imread(_act3_filepath), cv2.COLOR_BGR2RGB)
-    st.write('Original Image:')
-    st.pyplot(act3.visualize(act3_image))
-    st.write('Image Transformations: ', *_act3_transformations)
-    
-   
-    st.subheader("Image Transformations")
-    # st.write('File Path: ', _task3_filepath)
     for act3_image in _act3_images:
         act3_image = Image.open(task3_image)
         # task3_image = cv2.cvtColor(np.asarray(act3_image), cv2.COLOR_BGR2RGB)
@@ -103,9 +94,6 @@ def main():
                 case 'shear':
                     st.write("Shear")
                     st.pyplot(act3.visualize(act3.shear(act3_image, _act3_sheared_imgx, _act3_sheared_imgy)))
-    
-    if st.button("Exit"):
-        st.stop()
     
     if st.button("Exit"):
         st.stop()
